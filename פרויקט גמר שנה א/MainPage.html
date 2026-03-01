@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="he">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>הזמנת אוכל</title>
+  <link rel="stylesheet" href="./MainPage.css">
+</head>
+
+<body>
+  <div id="page"></div>
+  <div class="enter_button">
+    <button type="submit" id="log_in">log in</button>
+    <button type="submit" id="sign_up">sign up</button>
+  </div>
+  <template id="log_in_template" class="connectT">
+    <form id="loginForm">
+      <label for="name">שם מלא:</label>
+      <input type="text" id="name" name="name" required><br><br>
+
+      <label for="email">אימייל:</label>
+      <input type="email" id="email" name="email" required><br><br>
+
+      <label for="password">סיסמה:</label>
+      <input type="password" id="password" name="password" required><br><br>
+
+      <button type="submit" id="connect">התחבר</button>
+    </form>
+  </template>
+
+  <template id="sign_up_template" class="connectT">
+    <form id="signupForm">
+      <label for="name">שם מלא:</label>
+      <input type="text" id="name" name="name" required><br><br>
+
+      <label for="email">אימייל:</label>
+      <input type="email" id="email" name="email" required><br><br>
+
+      <label for="password">סיסמה:</label>
+      <input type="password" id="password" name="password" required><br><br>
+
+      <button type="submit" id="signUp">הרשם</button>
+    </form>
+  </template>
+
+  <template id="main_template">
+    <header>
+      <div class="logo">🍽️ מסעדת החלומות</div>
+      <div>
+        <button onclick="logout()">🚪 התנתקות</button>
+        <button onclick="showCart()">🛒 לתשלום</button>
+        <button onclick="showProfilePage()"> הפרופיל שלי </button>
+      </div>
+    </header>
+
+    <nav>
+      <button onclick="scrollToSection('deals')">עסקיות</button>
+      <button onclick="scrollToSection('sides')">תוספות</button>
+      <button onclick="scrollToSection('salads')">סלטים</button>
+      <button onclick="scrollToSection('desserts')">קינוחים</button>
+    </nav>
+
+    <main>
+      <section id="deals">
+        <h2>מנות עסקיות</h2>
+        <div class="items-grid" id="deals-items"></div>
+      </section>
+
+      <section id="sides">
+        <h2>תוספות</h2>
+        <div class="items-grid" id="sides-items"></div>
+      </section>
+
+      <section id="salads">
+        <h2>סלטים</h2>
+        <div class="items-grid" id="salads-items"></div>
+      </section>
+
+      <section id="desserts">
+        <h2>קינוחים</h2>
+        <div class="items-grid" id="desserts-items"></div>
+      </section>
+    </main>
+
+  </template>
+
+  <template id="profile_template">
+    <section class="profile">
+      <h2>הפרופיל שלי</h2>
+      <p>האם ברצונך לשנות את הסיסמה שלך?</p>
+      <button id="toggle_password_change">כן</button>
+      <button id="cancel_password_change">לא</button>
+
+      <div id="password_change_section" style="display: none; margin-top: 1rem;">
+        <input type="password" id="new_password" placeholder="סיסמה חדשה" />
+        <button id="save_password_btn">שמור סיסמה</button>
+      </div>
+    </section>
+  </template>
+
+
+
+  <template id="cart_template">
+    <div id="cart_modal" class="modal-overlay">
+      <div class="modal-content">
+        <span id="close_cart" class="close-button">❌</span>
+        <h2>🛒 ההזמנות שלך</h2>
+        <div id="cart_items_container"></div>
+        <button id="checkout_btn">לתשלום</button>
+      </div>
+    </div>
+  </template>
+
+  <template id="checkout_email_template">
+    <div id="checkout_email_section">
+      <h3>נא הזן את כתובת האימייל שלך לאישור</h3>
+      <input type="email" id="checkout_email_input" placeholder="הזן אימייל" required>
+      <button id="confirm_checkout_btn">אישור</button>
+    </div>
+  </template>
+  <script src="./FXMLHttpRequest.js"></script>
+  <script src="./MainPage.js"></script>
+  <script src="./Server.js"></script>
+  <script src="./DataBase.js"></script>
+
+</body>
+
+</html>
